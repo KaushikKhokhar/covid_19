@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:covid_19/world_information.dart';
 import 'package:flutter/material.dart';
 import 'constants.dart';
 import 'dart:math' as math;
@@ -13,6 +16,25 @@ class _SplashState extends State<Splash> with TickerProviderStateMixin {
   late final AnimationController _animationController =
       AnimationController(duration: const Duration(seconds: 3), vsync: this)
         ..repeat();
+
+  @override
+  void initState() {
+    super.initState();
+    Timer(
+      const Duration(seconds: 5),
+      () => Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => const WorldInformation(),
+        ),
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _animationController.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
