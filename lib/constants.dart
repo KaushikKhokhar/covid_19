@@ -11,6 +11,7 @@ class Constants {
   static const critical = 'Critical';
   static const todayDeaths = 'Today Deaths';
   static const todayRecovered = 'Today Recovered';
+  static const trackCountries = 'Track Countries';
 
   // details
   static const cases = 'cases';
