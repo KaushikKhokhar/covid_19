@@ -11,7 +11,7 @@ class WorldInformationServices {
     var response = await http.get(uri);
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body);
-      print('This is the response ${data}');
+      print('This is the response $data');
       return WorldInformationModel.fromJson(data);
     } else {
       throw Exception('Error');

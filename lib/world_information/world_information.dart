@@ -37,6 +37,7 @@ class _WorldInformationState extends State<WorldInformation>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.amberAccent,
       body: SafeArea(
         child: Padding(
@@ -76,6 +77,9 @@ class _WorldInformationState extends State<WorldInformation>
                         // color: Colors.grey[200],
                         child: Column(
                           children: [
+                            const SizedBox(
+                              height: 16,
+                            ),
                             WorldDataInformation(
                               title: Constants.total,
                               value: snapshot.data!.cases.toString(),
@@ -173,10 +177,9 @@ class WorldDataInformation extends StatelessWidget {
               Text(value),
             ],
           ),
-          const SizedBox(
-            height: 6,
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.038,
           ),
-          const Divider(),
         ],
       ),
     );

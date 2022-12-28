@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 class CountriesModel {
   CountriesModel({
     required this.updated,
@@ -140,18 +142,18 @@ class CountryInfo {
   String flag;
 
   factory CountryInfo.fromJson(Map<String, dynamic> json) => CountryInfo(
-        id: json["_id"] == null ? 0 : json["_id"],
-        iso2: json["iso2"] == null ? '' : json["iso2"],
-        iso3: json["iso3"] == null ? '' : json["iso3"],
+        id: json["_id"] ?? 0,
+        iso2: json["iso2"] ?? '',
+        iso3: json["iso3"] ?? '',
         lat: json["lat"].toDouble(),
         long: json["long"].toDouble(),
         flag: json["flag"],
       );
 
   Map<String, dynamic> toJson() => {
-        "_id": id == null ? null : id,
-        "iso2": iso2 == null ? null : iso2,
-        "iso3": iso3 == null ? null : iso3,
+        "_id": id,
+        "iso2": iso2,
+        "iso3": iso3,
         "lat": lat,
         "long": long,
         "flag": flag,
@@ -165,9 +167,7 @@ class EnumValues<T> {
   EnumValues(this.map);
 
   Map<T, String> get reverse {
-    if (reverseMap == null) {
-      reverseMap = map.map((k, v) => new MapEntry(v, k));
-    }
+    reverseMap;
     return reverseMap;
   }
 }

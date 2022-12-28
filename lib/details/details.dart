@@ -27,6 +27,7 @@ class Details extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.only(top: 16),
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         backgroundColor: Colors.grey[200],
         appBar: AppBar(
           centerTitle: true,
@@ -61,6 +62,9 @@ class Details extends StatelessWidget {
                     child: Card(
                       child: Column(
                         children: [
+                          const SizedBox(
+                            height: 16,
+                          ),
                           WorldDataInformation(
                             title: Constants.cases,
                             value: cases.toString(),
