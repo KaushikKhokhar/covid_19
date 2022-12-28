@@ -9,7 +9,7 @@ class WorldInformationModel {
   int active;
   int critical;
   int casesPerOneMillion;
-  int deathsPerOneMillion;
+  double deathsPerOneMillion;
   int tests;
   double testsPerOneMillion;
   int population;

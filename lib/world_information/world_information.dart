@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:pie_chart/pie_chart.dart';
 
+import '../countries/countries.dart';
 import 'model/world_information_model.dart';
 
 class WorldInformation extends StatefulWidget {
@@ -109,19 +110,25 @@ class _WorldInformationState extends State<WorldInformation>
                       const SizedBox(
                         height: 16,
                       ),
-                      Container(
-                        alignment: Alignment.center,
-                        height: 50,
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          color: const Color(0xff1aa260),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: const Text(
-                          'Track Countries',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
+                      InkWell(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => const Countries()));
+                        },
+                        child: Container(
+                          alignment: Alignment.center,
+                          height: 50,
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: const Color(0xff1aa260),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: const Text(
+                            'Track Countries',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                       ),
