@@ -1,5 +1,6 @@
 import 'package:covid_19/countries/model/countries_model.dart';
 import 'package:covid_19/countries/services/countries_services.dart';
+import 'package:covid_19/details/details.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -75,33 +76,53 @@ class _CountriesState extends State<Countries> {
                                   const SizedBox(
                                     height: 8,
                                   ),
-                                  Row(
-                                    children: [
-                                      CircleAvatar(
-                                        radius: 25,
-                                        backgroundImage: NetworkImage(
-                                          countriesData.countryInfo.flag,
-                                        ),
-                                      ),
-                                      const SizedBox(
-                                        width: 16,
-                                      ),
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(countriesData.country,
-                                              style: const TextStyle(
-                                                  fontSize: 16,
-                                                  fontWeight: FontWeight.bold)),
-                                          Text(
-                                            countriesData.cases.toString(),
-                                            style:
-                                                const TextStyle(fontSize: 14),
+                                  InkWell(
+                                    onTap: () {
+                                      Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                          builder: (context) => Details(
+                                            country: countriesData.country,
+                                            image:
+                                                countriesData.countryInfo.flag,
+                                            cases: countriesData.cases,
+                                            recovered: countriesData.recovered,
+                                            death: countriesData.deaths,
+                                            critical: countriesData.critical,
+                                            todayRecovered:
+                                                countriesData.todayRecovered,
                                           ),
-                                        ],
-                                      ),
-                                    ],
+                                        ),
+                                      );
+                                    },
+                                    child: Row(
+                                      children: [
+                                        CircleAvatar(
+                                          radius: 25,
+                                          backgroundImage: NetworkImage(
+                                            countriesData.countryInfo.flag,
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          width: 16,
+                                        ),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(countriesData.country,
+                                                style: const TextStyle(
+                                                    fontSize: 16,
+                                                    fontWeight:
+                                                        FontWeight.bold)),
+                                            Text(
+                                              countriesData.cases.toString(),
+                                              style:
+                                                  const TextStyle(fontSize: 14),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                   const SizedBox(
                                     height: 8,
@@ -111,44 +132,63 @@ class _CountriesState extends State<Countries> {
                               );
                             } else if (name.toLowerCase().contains(
                                 _searchController.text.toLowerCase())) {
-                              return Column(
-                                children: [
-                                  const SizedBox(
-                                    height: 8,
-                                  ),
-                                  Row(
-                                    children: [
-                                      CircleAvatar(
-                                        radius: 25,
-                                        backgroundImage: NetworkImage(
-                                          countriesData.countryInfo.flag,
-                                        ),
+                              return InkWell(
+                                onTap: () {
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (context) => Details(
+                                        country: countriesData.country,
+                                        image: countriesData.countryInfo.flag,
+                                        cases: countriesData.cases,
+                                        recovered: countriesData.recovered,
+                                        death: countriesData.deaths,
+                                        critical: countriesData.critical,
+                                        todayRecovered:
+                                            countriesData.todayRecovered,
                                       ),
-                                      const SizedBox(
-                                        width: 16,
-                                      ),
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(countriesData.country,
-                                              style: const TextStyle(
-                                                  fontSize: 16,
-                                                  fontWeight: FontWeight.bold)),
-                                          Text(
-                                            countriesData.cases.toString(),
-                                            style:
-                                                const TextStyle(fontSize: 14),
+                                    ),
+                                  );
+                                },
+                                child: Column(
+                                  children: [
+                                    const SizedBox(
+                                      height: 8,
+                                    ),
+                                    Row(
+                                      children: [
+                                        CircleAvatar(
+                                          radius: 25,
+                                          backgroundImage: NetworkImage(
+                                            countriesData.countryInfo.flag,
                                           ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(
-                                    height: 8,
-                                  ),
-                                  const Divider(),
-                                ],
+                                        ),
+                                        const SizedBox(
+                                          width: 16,
+                                        ),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(countriesData.country,
+                                                style: const TextStyle(
+                                                    fontSize: 16,
+                                                    fontWeight:
+                                                        FontWeight.bold)),
+                                            Text(
+                                              countriesData.cases.toString(),
+                                              style:
+                                                  const TextStyle(fontSize: 14),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                    const SizedBox(
+                                      height: 8,
+                                    ),
+                                    const Divider(),
+                                  ],
+                                ),
                               );
                             }
                             return Container();
