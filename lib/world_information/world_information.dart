@@ -51,13 +51,13 @@ class _WorldInformationState extends State<WorldInformation>
                     children: [
                       PieChart(
                         dataMap: {
-                          'Total': double.parse(
+                          Constants.total: double.parse(
                             snapshot.data!.cases.toString(),
                           ),
-                          'Recovered': double.parse(
+                          Constants.recovered: double.parse(
                             snapshot.data!.recovered.toString(),
                           ),
-                          'Deaths': double.parse(
+                          Constants.deaths: double.parse(
                             snapshot.data!.deaths.toString(),
                           ),
                         },
@@ -74,7 +74,6 @@ class _WorldInformationState extends State<WorldInformation>
                         height: 16,
                       ),
                       Card(
-                        // color: Colors.grey[200],
                         child: Column(
                           children: [
                             const SizedBox(
@@ -128,7 +127,7 @@ class _WorldInformationState extends State<WorldInformation>
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: const Text(
-                            'Track Countries',
+                            Constants.trackCountries,
                             style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
